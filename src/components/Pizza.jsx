@@ -1,12 +1,24 @@
 import React from "react";
 
 export default function Pizza(props) {
-  console.log(props);
+  const { photoName, name, ingredients, price, soldOut } = props;
+
+  /* if (props.item.soldOut) {
+    return (
+
+    );
+  } */
+
   return (
-    <div className="pizza">
-      <img src={props.item.photoName} alt={props.item.name} />
-      <h2>{props.item.name}</h2>
-      <p>{props.item.ingredients}</p>
-    </div>
+    <li className={`pizza ${soldOut ? "sold-out" : ""}`}>
+      <img className="pizza-img" src={photoName} alt={name} />
+      <div className="pizza-container">
+        <h3 className="pizza-title">{name}</h3>
+        <p className="pizza-ingredients">{ingredients}</p>
+        <span className="pizza-price">
+          {soldOut ? "SOLD OUT" : `$ ${price}`}
+        </span>
+      </div>
+    </li>
   );
 }
